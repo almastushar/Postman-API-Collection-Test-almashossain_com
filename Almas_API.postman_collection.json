@@ -1,0 +1,445 @@
+{
+	"info": {
+		"_postman_id": "7a7030bf-a4da-49da-9e0c-741074d3beeb",
+		"name": "Almas_API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Post_Reg",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "838606b4-d8e0-4232-b637-76a3100d7d36",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var JSONBody = pm.response.json();",
+							"pm.globals.set(\"EID\", JSONBody.EID);",
+							"pm.globals.set(\"Name\", JSONBody.Name);",
+							"pm.globals.set(\"Email\", JSONBody.Email);",
+							"pm.globals.set(\"Password\", JSONBody.Password);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Name\": \"{{$randomFullName}}\",\n    \"Image\": \"{{$randomPeopleImage}}\",\n    \"Age\": \"{{$randomInt}}\",\n    \"DateofBirth\": \"1990-01-01\",\n    \"Mobile\": \"0{{$randomPhoneNumber}}\",\n    \"Email\": \"test{{$randomInt}}@test{{$randomInt}}.com\",\n    \"Password\": \"{{$randomPassword}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://almashossain.com/APP/VIEWS/API.php?RequestTitle=EmployeeRegistration",
+					"protocol": "https",
+					"host": [
+						"almashossain",
+						"com"
+					],
+					"path": [
+						"APP",
+						"VIEWS",
+						"API.php"
+					],
+					"query": [
+						{
+							"key": "RequestTitle",
+							"value": "EmployeeRegistration"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post_Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "838606b4-d8e0-4232-b637-76a3100d7d36",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \n\t\"Email\": \"{{Email}}\", \n\t\"Password\": \"{{Password}}\"\n\t\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://almashossain.com/APP/VIEWS/API.php?RequestTitle=EmployeeLogin",
+					"protocol": "https",
+					"host": [
+						"almashossain",
+						"com"
+					],
+					"path": [
+						"APP",
+						"VIEWS",
+						"API.php"
+					],
+					"query": [
+						{
+							"key": "RequestTitle",
+							"value": "EmployeeLogin"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get_All_User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2fc33ffd-6081-4be5-a00e-0d1a93346955",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://almashossain.com/APP/VIEWS/API.php?RequestTitle=ViewAllEmployees",
+					"protocol": "https",
+					"host": [
+						"almashossain",
+						"com"
+					],
+					"path": [
+						"APP",
+						"VIEWS",
+						"API.php"
+					],
+					"query": [
+						{
+							"key": "RequestTitle",
+							"value": "ViewAllEmployees"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get_Single_User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2fc33ffd-6081-4be5-a00e-0d1a93346955",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://almashossain.com/APP/VIEWS/API.php?RequestTitle=SingleEmployeeDetails&EID={{EID}}",
+					"protocol": "https",
+					"host": [
+						"almashossain",
+						"com"
+					],
+					"path": [
+						"APP",
+						"VIEWS",
+						"API.php"
+					],
+					"query": [
+						{
+							"key": "RequestTitle",
+							"value": "SingleEmployeeDetails"
+						},
+						{
+							"key": "EID",
+							"value": "{{EID}}"
+						},
+						{
+							"key": null,
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put_Update_User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0d29a27f-222c-4b50-b0c6-70e75d63f5ca",
+						"exec": [
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"var JSONBody = pm.response.json();",
+							"pm.globals.set(\"Name_Update\", JSONBody.Name);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Name\": \"{{$randomFullName}}\",\n    \"Image\": \"{{$randomPeopleImage}}\",\n    \"Age\": \"{{$randomInt}}\",\n    \"DateofBirth\": \"1990-01-01\",\n    \"Mobile\": \"0{{$randomPhoneNumber}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://almashossain.com/APP/VIEWS/API.php?RequestTitle=UpdateEmployeeDetails&EID={{EID}}",
+					"protocol": "https",
+					"host": [
+						"almashossain",
+						"com"
+					],
+					"path": [
+						"APP",
+						"VIEWS",
+						"API.php"
+					],
+					"query": [
+						{
+							"key": "RequestTitle",
+							"value": "UpdateEmployeeDetails"
+						},
+						{
+							"key": "EID",
+							"value": "{{EID}}"
+						},
+						{
+							"key": null,
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get_Single_Update_User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1fc18da9-a953-4820-b285-7da7b74d576b",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							"",
+							"pm.test(\"Name Updated!\", function () {",
+							"    var JSONBody = pm.response.json();",
+							"   var name = pm.globals.get(\"Name_Update\");",
+							"   pm.expect(JSONBody.Name).to.equal(name);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://almashossain.com/APP/VIEWS/API.php?RequestTitle=SingleEmployeeDetails&EID={{EID}}",
+					"protocol": "https",
+					"host": [
+						"almashossain",
+						"com"
+					],
+					"path": [
+						"APP",
+						"VIEWS",
+						"API.php"
+					],
+					"query": [
+						{
+							"key": "RequestTitle",
+							"value": "SingleEmployeeDetails"
+						},
+						{
+							"key": "EID",
+							"value": "{{EID}}"
+						},
+						{
+							"key": null,
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete_User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "81a7bd23-dea1-4961-9f14-f9c4cea47f9c",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://almashossain.com/APP/VIEWS/API.php?RequestTitle=DeleteEmployee&EID={{EID}}",
+					"protocol": "https",
+					"host": [
+						"almashossain",
+						"com"
+					],
+					"path": [
+						"APP",
+						"VIEWS",
+						"API.php"
+					],
+					"query": [
+						{
+							"key": "RequestTitle",
+							"value": "DeleteEmployee"
+						},
+						{
+							"key": "EID",
+							"value": "{{EID}}"
+						},
+						{
+							"key": null,
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get_Update",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "60b4e853-7aa0-4971-addf-9a810aba406d",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://almashossain.com/APP/VIEWS/API.php?RequestTitle=SingleEmployeeDetails&EID={{EID}}",
+					"protocol": "https",
+					"host": [
+						"almashossain",
+						"com"
+					],
+					"path": [
+						"APP",
+						"VIEWS",
+						"API.php"
+					],
+					"query": [
+						{
+							"key": "RequestTitle",
+							"value": "SingleEmployeeDetails"
+						},
+						{
+							"key": "EID",
+							"value": "{{EID}}"
+						},
+						{
+							"key": null,
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
